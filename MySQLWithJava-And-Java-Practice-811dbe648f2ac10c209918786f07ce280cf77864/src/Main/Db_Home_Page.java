@@ -12,7 +12,8 @@ public class Db_Home_Page extends JFrame {
     JPanel contentPane;
     JButton logoutButton;
     JButton stockButton;
-    JButton emp_directory; //new button
+    JButton emp_directory;
+    JButton orderForm;
 
     public Db_Home_Page() {
 
@@ -95,6 +96,36 @@ public class Db_Home_Page extends JFrame {
         });
         contentPane.add(emp_directory);
 
+        //The emp_directory button
+        orderForm = new JButton("Create Order");
+        //emp_directory.setBackground(Color.GREEN); //can change color if needed
+        orderForm.setBounds(75, 300, 250, 95);
+        orderForm.setForeground(Color.WHITE);
+        orderForm.setBackground(new Color(56, 100, 100));
+        orderForm.setFont(new Font("Arial", Font.BOLD, 30));
+        orderForm.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                int c = JOptionPane.showConfirmDialog(orderForm, "Do you want to see create an order form?", "Confirmation window", JOptionPane.YES_NO_OPTION);
+
+                if (c == JOptionPane.YES_OPTION) {
+
+                    OrderForm orderForm = new OrderForm();
+                    orderForm.setVisible(true);
+                    dispose();
+                    //only to check if working
+                    System.out.println("Options are 'Yes' = 0, 'No' = 1");
+                    System.out.println("Values Clicked: " + c);
+                    System.out.println("Opening Order Form.");
+
+                } else if (c == JOptionPane.NO_OPTION) {
+                    JOptionPane.showMessageDialog(orderForm, "Select an option");
+
+                }
+            }
+        });
+        contentPane.add(orderForm);
+
         //The logout button.
         logoutButton = new JButton("Logout");
         //logoutButton.setBackground(Color.GREEN); //can change color if needed
@@ -108,7 +139,6 @@ public class Db_Home_Page extends JFrame {
                 int a = JOptionPane.showConfirmDialog(logoutButton, "Are you sure you want to logout?", "Confirm logout", JOptionPane.YES_NO_OPTION);
 
                 if (a == JOptionPane.YES_OPTION) {
-                    dispose();
                     // Create a new instance of the sign in window
                     Db_Sign_In backToLogIn = new Db_Sign_In();
                     backToLogIn.setVisible(true);

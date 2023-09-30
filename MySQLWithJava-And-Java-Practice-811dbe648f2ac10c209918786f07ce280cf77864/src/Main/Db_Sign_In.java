@@ -2,7 +2,7 @@ package Main;
 /*This application is created to practice java and MySql, and learn about java
   and MySql.
 
-  This is the first page of a store inventory page. The employee has to login by
+  This is the first page of a store inventory page. The employee has to log in by
   their employee email and password. This is followed by the Db_Home_Page.java.
 
 
@@ -161,6 +161,16 @@ public class Db_Sign_In extends JFrame {
     JLabel label;
     JPanel contentPane;
 
+    // Custom method to fetch text from JTextField
+    private String getText1(JTextField textField) {
+        return textField.getText();
+    }
+
+    // Custom method to fetch text from JPasswordField
+    private String getText2(JPasswordField pwField) {
+        return new String(pwField.getPassword());
+    }
+
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
@@ -269,8 +279,8 @@ public class Db_Sign_In extends JFrame {
         loginButton.setBackground(new Color(56, 100, 100));
         loginButton.setFocusPainted(false);
         loginButton.addActionListener(e -> {
-            String email = textF.getText();
-            String pw = pwField.getText();
+            String email = getText1(textF);
+            String pw = getText2(pwField);
 
             // Try{}catch{} is used to connect to the database ,'getting_data', through a localhost and
             // retrieve data from a table.
