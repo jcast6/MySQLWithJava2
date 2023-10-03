@@ -19,7 +19,6 @@ public class StockPage extends JFrame {
     ResultSet rs2;
     JButton backButton;
 
-
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -36,7 +35,6 @@ public class StockPage extends JFrame {
     public StockPage() {
 
     }
-
 
     //The frame for the stock page.
     public StockPage(String user) {
@@ -101,7 +99,6 @@ public class StockPage extends JFrame {
                         /**
                          *
                          * This will be displayed in the console not gui.
-                         *
                          System.out.println("Stock: ");
                          while (rs1.next()) {
                          // Here we create variables according to the table column names, and
@@ -114,9 +111,6 @@ public class StockPage extends JFrame {
                          System.out.format("%s, %s\n", sku, product_name);
 
                          }
-                         *
-                         *
-                         *
                          *
                          */
                     } catch (SQLException ec) {
@@ -143,7 +137,6 @@ public class StockPage extends JFrame {
             }
         });
         contentPane.add(stockButton1);
-
 
         // This button will display all the items with amount available
         stockButton2 = new JButton("Items with count");
@@ -199,7 +192,6 @@ public class StockPage extends JFrame {
                         /**
                          *
                          * This will be displayed in the console not gui.
-                         *
                          System.out.println("Stock: ");
                          while (rs1.next()) {
                          // Here we create variables according to the table column names, and
@@ -212,10 +204,6 @@ public class StockPage extends JFrame {
                          System.out.format("%s, %s\n", sku, product_name);
 
                          }
-                         *
-                         *
-                         *
-                         *
                          */
 
                     } catch (SQLException ec) {
@@ -242,7 +230,6 @@ public class StockPage extends JFrame {
             }
         });
         contentPane.add(stockButton2);
-
 
         // Create the "Add New Item" button
         JButton addStockItem = new JButton("Add New Item");
@@ -302,7 +289,6 @@ public class StockPage extends JFrame {
         });
         contentPane.add(addStockItem);
 
-
         // Add an action listener to the register button
         backButton = new JButton("Previous Page");
         backButton.setBounds(10, 450, 150, 50);
@@ -329,7 +315,6 @@ public class StockPage extends JFrame {
         });
         contentPane.add(backButton);
     }
-
 
     public void refreshTableData(DefaultTableModel tableModel, PreparedStatement statement, String q) {
         try {

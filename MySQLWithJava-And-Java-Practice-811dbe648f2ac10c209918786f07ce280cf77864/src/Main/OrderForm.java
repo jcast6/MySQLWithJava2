@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-
 public class OrderForm extends JFrame {
     private JComboBox<String> itemDropdown = new JComboBox<>();
     private JTextField amountField = new JTextField(20);
@@ -21,10 +20,11 @@ public class OrderForm extends JFrame {
     private JTextField storeIdField = new JTextField(20);
     private JTextField salesmanField = new JTextField(20);
     private JButton submitButton = new JButton("Submit");
-    private JLabel totalItemsLabel = new JLabel("Total items for order: 0");
+    private JLabel totalItemsLabel = new JLabel("Total items for order: ");
     private int totalItems = 0;
 
-    public OrderForm() {
+    private JButton previousPageButton = new JButton("Previous Page");
+    public OrderForm(String user) {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         add(new JLabel("Invoice #"));
@@ -204,7 +204,26 @@ public class OrderForm extends JFrame {
             }
         });
 
+        //previous Page button
+        add(previousPageButton);
+        previousPageButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int choice = JOptionPane.showOptionDialog(null, "Go to Previous Page?", "Confirm",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Previous Page", "Exit"}, null);
+
+                if (choice == 0) {
+                    // Create a new instance of the sign in window
+                    Db_Home_Page backToHome = new Db_Home_Page(user);
+                    backToHome.setVisible(true);
+                    dispose(); // Close the current registration window
+                } else if (choice == 1) {
+                    System.exit(0);
+                }
+            }
+        });
     }
+
 
     public static DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
         ResultSetMetaData metaData = rs.getMetaData();
@@ -307,7 +326,7 @@ public class OrderForm extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new OrderForm().setVisible(true);
+                new OrderForm("User1").setVisible(true);
             }
         });
     }

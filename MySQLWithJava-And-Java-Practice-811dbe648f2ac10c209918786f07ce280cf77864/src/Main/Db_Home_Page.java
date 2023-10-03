@@ -110,7 +110,7 @@ public class Db_Home_Page extends JFrame {
 
                 if (c == JOptionPane.YES_OPTION) {
 
-                    OrderForm orderForm = new OrderForm();
+                    OrderForm orderForm = new OrderForm(user);
                     orderForm.setVisible(true);
                     dispose();
                     //only to check if working
